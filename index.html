@@ -3,62 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mirchi 360 - Official Menu</title>
+    <title>Mirchi 360 - Smart Menu</title>
     
     <style>
         :root { --primary: #e67e22; --dark: #2c3e50; --green: #27ae60; }
         
-        /* پورے پیج کو سیٹ کیا تاکہ کارڈ بیچ میں اور بڑا لگے */
         body { 
-            font-family: 'Arial', sans-serif; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             background-color: #f0f2f5; 
             display: flex; 
             justify-content: center; 
-            padding: 10px;
+            padding: 15px;
             margin: 0;
         }
         
-        /* کارڈ کو بڑا اور موبائل اسکرین کے مطابق کیا */
         .bill-card { 
             background: white; 
             width: 100%; 
-            max-width: 450px; /* پہلے یہ 340 تھا، اب بڑا کر دیا ہے */
-            border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
-            padding: 25px; 
-            border-top: 10px solid var(--primary);
+            max-width: 480px; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
+            padding: 30px; 
+            border-top: 12px solid var(--primary);
             box-sizing: border-box;
         }
 
-        .header { text-align: center; border-bottom: 3px dashed #eee; padding-bottom: 15px; }
-        .header h1 { margin: 5px 0; color: var(--primary); font-size: 32px; letter-spacing: 2px; }
-        .header p { margin: 0; font-size: 14px; color: #777; font-weight: bold; }
+        .header { text-align: center; border-bottom: 4px dashed #eee; padding-bottom: 20px; }
+        .header h1 { margin: 5px 0; color: var(--primary); font-size: 38px; letter-spacing: 2px; font-weight: 900; }
+        .header p { margin: 0; font-size: 14px; color: #888; letter-spacing: 3px; font-weight: bold; }
 
-        .section { margin-top: 25px; }
-        label { display: block; font-size: 16px; font-weight: bold; color: var(--dark); margin-bottom: 8px; }
+        .section { margin-top: 30px; }
+        label { display: block; font-size: 16px; font-weight: bold; color: var(--dark); margin-bottom: 10px; text-transform: uppercase; }
         
-        /* ان پٹ ڈبوں کو بڑا کیا تاکہ انگلی سے دبانے میں آسانی ہو */
         select, input { 
             width: 100%; 
-            padding: 15px; 
+            padding: 18px; 
             border: 2px solid #ddd; 
-            border-radius: 10px; 
-            margin-bottom: 20px; 
+            border-radius: 12px; 
+            margin-bottom: 25px; 
             font-size: 18px; 
             box-sizing: border-box;
+            background: #fff;
+            color: #333;
         }
 
-        .receipt-area { background: #fafafa; border: 2px solid #eee; padding: 20px; border-radius: 10px; }
-        .receipt-line { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 18px; }
+        .receipt-area { background: #fdfdfd; border: 2px solid #eee; padding: 25px; border-radius: 15px; position: relative; }
+        .receipt-line { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 18px; border-bottom: 1px solid #f1f1f1; padding-bottom: 8px; }
         
         .total-line { 
-            border-top: 3px solid var(--dark); 
+            border-top: 4px solid var(--dark); 
             margin-top: 15px; 
             padding-top: 15px; 
             display: flex; 
             justify-content: space-between; 
             font-weight: bold; 
-            font-size: 24px; 
+            font-size: 26px; 
             color: var(--green); 
         }
 
@@ -67,17 +66,20 @@
             background: var(--green); 
             color: white; 
             border: none; 
-            padding: 18px; 
-            font-size: 20px; 
+            padding: 22px; 
+            font-size: 22px; 
             font-weight: bold; 
             cursor: pointer; 
-            border-radius: 12px; 
-            margin-top: 25px; 
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+            border-radius: 15px; 
+            margin-top: 30px; 
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+            transition: 0.3s;
         }
 
-        .developer-tag { text-align: center; margin-top: 30px; font-size: 12px; color: #999; border-top: 1px solid #eee; padding-top: 15px; }
-        .developer-tag b { color: var(--primary); font-size: 14px; }
+        .order-btn:active { transform: scale(0.98); }
+
+        .developer-tag { text-align: center; margin-top: 40px; font-size: 12px; color: #999; border-top: 1px solid #eee; padding-top: 20px; }
+        .developer-tag b { color: var(--primary); font-size: 14px; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -85,11 +87,11 @@
 <div class="bill-card">
     <div class="header">
         <h1>MIRCHI 360⁰</h1>
-        <p>SMART RECEIPT SYSTEM</p>
+        <p>DIGITAL ORDER SYSTEM</p>
     </div>
 
     <div class="section">
-        <label>SELECT FOOD ITEM</label>
+        <label>Select Menu Item</label>
         <select id="item" onchange="generateBill()">
             <option value="380">Zinger Burger - Rs 380</option>
             <option value="450">Chicken Cheese Burger - Rs 450</option>
@@ -101,33 +103,33 @@
             <option value="120">Soft Drink - Rs 120</option>
         </select>
 
-        <label>QUANTITY</label>
+        <label>Order Quantity</label>
         <input type="number" id="qty" value="1" min="1" oninput="generateBill()">
     </div>
 
     <div class="receipt-area">
         <div class="receipt-line">
-            <span>Item:</span>
+            <span>Item Name:</span>
             <span id="res-name" style="font-weight:bold;">Zinger Burger</span>
         </div>
         <div class="receipt-line">
-            <span>Price:</span>
+            <span>Unit Price:</span>
             <span id="res-price">Rs 380</span>
         </div>
         <div class="receipt-line">
-            <span>Qty:</span>
+            <span>Quantity:</span>
             <span id="res-qty">1</span>
         </div>
         <div class="total-line">
-            <span>NET TOTAL:</span>
+            <span>TOTAL BILL:</span>
             <span id="totalAmount">Rs 380</span>
         </div>
     </div>
 
-    <button class="order-btn" onclick="confirmOrder()">CONFIRM ORDER</button>
+    <button class="order-btn" onclick="confirmOrder()">SEND ORDER TO WHATSAPP</button>
 
     <div class="developer-tag">
-        SYSTEM DESIGNED BY:<br>
+        POWERED BY:<br>
         <b>AIJAZ ALI DEVELOPMENTS</b>
     </div>
 </div>
@@ -137,7 +139,7 @@
         var itemSelect = document.getElementById("item");
         var price = itemSelect.value;
         var qty = document.getElementById("qty").value;
-        var itemName = itemSelect.options[itemSelect.selectedIndex].text.split('-')[0];
+        var itemName = itemSelect.options[itemSelect.selectedIndex].text.split('-')[0].trim();
 
         var total = price * qty;
 
@@ -153,13 +155,13 @@
         var total = document.getElementById("totalAmount").innerText;
         var phone = "923083360360";
         
-        var message = "*ORDER RECEIPT - MIRCHI 360*%0A" +
+        var message = "*NEW ONLINE ORDER - MIRCHI 360*%0A" +
                       "----------------------------%0A" +
                       "*Item:* " + item + "%0A" +
                       "*Quantity:* " + qty + "%0A" +
-                      "*Total Bill:* " + total + "%0A" +
+                      "*Net Total:* " + total + "%0A" +
                       "----------------------------%0A" +
-                      "Please prepare my order.";
+                      "Kindly confirm this order.";
         
         window.open("https://wa.me/" + phone + "?text=" + message);
     }
@@ -167,4 +169,3 @@
 
 </body>
 </html>
-

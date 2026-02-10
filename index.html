@@ -1,81 +1,121 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aijaz Ali - Professional Card</title>
+    <title>Mirchi 360 - Official Menu</title>
+    
     <style>
-        :root { --bg: #f4f7f6; --card-bg: #ffffff; --text: #2c3e50; --primary: #28a745; }
-        .dark-mode { --bg: #1a1a1a; --card-bg: #2d2d2d; --text: #ffffff; --primary: #4ade80; }
+        :root { --primary: #e67e22; --dark: #2c3e50; --green: #27ae60; }
+        body { font-family: 'Arial', sans-serif; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
         
-        body { font-family: 'Arial', sans-serif; background-color: var(--bg); color: var(--text); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; transition: 0.3s; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center; width: 340px; border-top: 8px solid var(--primary); }
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--primary); object-fit: cover; margin-bottom: 15px; }
-        
-        .btn { display: inline-block; padding: 10px 20px; margin: 10px 5px; border-radius: 50px; text-decoration: none; font-weight: bold; cursor: pointer; transition: 0.3s; border: none; }
-        .btn-download { background: var(--primary); color: white; }
-        .btn-dark { background: #34495e; color: white; }
-        .social-links a { color: var(--primary); margin: 0 10px; font-size: 20px; text-decoration: none; font-weight: bold; }
+        .bill-card { background: white; width: 340px; border-radius: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); padding: 20px; border-top: 5px solid var(--primary); position: relative; }
+        .bill-card::after { content: ""; position: absolute; bottom: -10px; left: 0; width: 100%; height: 10px; background: linear-gradient(-45deg, white 5px, transparent 0), linear-gradient(45deg, white 5px, transparent 0); background-size: 10px 10px; }
+
+        .header { text-align: center; border-bottom: 2px dashed #ddd; padding-bottom: 10px; }
+        .header h1 { margin: 5px 0; color: var(--primary); font-size: 24px; letter-spacing: 2px; }
+        .header p { margin: 0; font-size: 12px; color: #777; }
+
+        .section { margin-top: 20px; }
+        label { display: block; font-size: 13px; font-weight: bold; color: var(--dark); margin-bottom: 5px; }
+        select, input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px; font-size: 14px; }
+
+        .receipt-area { background: #fdfdfd; border: 1px solid #eee; padding: 15px; margin-top: 10px; }
+        .receipt-line { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+        .total-line { border-top: 2px solid var(--dark); margin-top: 10px; padding-top: 10px; display: flex; justify-content: space-between; font-weight: bold; font-size: 18px; color: var(--green); }
+
+        .order-btn { width: 100%; background: var(--green); color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; cursor: pointer; border-radius: 5px; margin-top: 20px; transition: 0.3s; }
+        .order-btn:hover { background: #219150; }
+
+        .developer-tag { text-align: center; margin-top: 30px; font-size: 10px; color: #999; border-top: 1px solid #eee; padding-top: 10px; }
+        .developer-tag b { color: var(--dark); }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <button class="btn btn-dark" onclick="toggleDark()">🌓 Toggle Dark Mode</button>
-    <br>
-    <img src="1770427075814.png" alt="Aijaz Ali" class="profile-img">
-    <h1>Aijaz Ali</h1>
-    <p>Web Developer & Professional</p>
-
-    <div class="social-links">
-        <a href="#">Facebook</a> | <a href="https://wa.me/923162813659">WhatsApp</a>
+<div class="bill-card">
+    <div class="header">
+        <h1>MIRCHI 360⁰</h1>
+        <p>ORDERING RECEIPT SYSTEM</p>
     </div>
 
-    <a href="https://www.google.com/maps?q=Nawabshah" target="_blank" class="btn social-btn" style="color: #4285F4;">📍 Nawabshah, Sindh</a>
-    <br>
-    <a href="tel:+923162813659" class="btn btn-dark" style="margin-top: 10px;">📞 Call Me</a>
-    <br>
-    <div style="text-align: center; font-family: Arial, sans-serif; padding: 20px; border: 2px solid #007bff; border-radius: 15px; max-width: 350px; margin: auto; background-color: #f8f9fa;">
-    <h2 style="color: #333;">Aijaz Ali Digital Card</h2>
-    
-    <img src="https://avatars.githubusercontent.com/u/197147710?v=4" alt="Aijaz Ali" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
-    
-    <p style="font-size: 16px; color: #555;">Welcome to my official profile!</p>
+    <div class="section">
+        <label>SELECT FOOD ITEM</label>
+        <select id="item" onchange="generateBill()">
+            <option value="380">Zinger Burger - Rs 380</option>
+            <option value="450">Chicken Cheese Burger - Rs 450</option>
+            <option value="950">Tikka Pizza (M) - Rs 950</option>
+            <option value="1450">Mirchi Special (L) - Rs 1450</option>
+            <option value="250">Zinger Roll - Rs 250</option>
+            <option value="350">Club Sandwich - Rs 350</option>
+            <option value="300">Loaded Fries - Rs 300</option>
+            <option value="120">Soft Drink - Rs 120</option>
+        </select>
 
-    <div style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; border: none; border-radius: 20px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.3); max-width: 400px; margin: 20px auto;">
-  
-  <h1 style="margin-bottom: 10px; font-size: 28px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); letter-spacing: 1px;">AIJAZ ALI MAGSI</h1>
-  <p style="font-size: 18px; opacity: 0.9; font-weight: 300;">Professional Web Developer</p>
-  
-  <hr style="width: 50%; border: 0.5px solid rgba(255,255,255,0.2); margin: 20px auto;">
+        <label>QUANTITY</label>
+        <input type="number" id="qty" value="1" min="1" oninput="generateBill()">
+    </div>
 
-  <p style="font-size: 14px; margin-bottom: 25px; line-height: 1.6;">Welcome to my official digital business card. I specialize in creating modern web solutions.</p>
+    <div class="receipt-area">
+        <div class="receipt-line">
+            <span>Item:</span>
+            <span id="res-name">Zinger Burger</span>
+        </div>
+        <div class="receipt-line">
+            <span>Price:</span>
+            <span id="res-price">Rs 380</span>
+        </div>
+        <div class="receipt-line">
+            <span>Qty:</span>
+            <span id="res-qty">1</span>
+        </div>
+        <div class="total-line">
+            <span>NET TOTAL:</span>
+            <span id="totalAmount">Rs 380</span>
+        </div>
+    </div>
 
-  <a href="index.html" download="Aijaz_Ali_Card.html" style="display: inline-block; background-color: #ff4b2b; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; margin: 10px; box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);">
-  📥 DOWNLOAD FILE
-</a>
+    <button class="order-btn" onclick="confirmOrder()">CONFIRM ORDER</button>
 
-  </a>
-
-  <br>
-
-  <a href="https://wa.me/923162813659" style="display: inline-block; background-color: #25D366; color: white; padding: 12px 25px; text-decoration: none; border-radius: 50px; font-size: 15px; margin: 10px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);">
-    💬 CONTACT WHATSAPP
-  </a>
-
-  <div style="margin-top: 20px; font-size: 12px; opacity: 0.6;">
-    © 2026 Aijaz Ali Magsi. All Rights Reserved.
-  </div>
-
+    <div class="developer-tag">
+        SYSTEM DESIGNED BY:<br>
+        <b>AIJAZ ALI DEVELOPMENTS</b>
+    </div>
 </div>
 
+<script>
+    function generateBill() {
+        var itemSelect = document.getElementById("item");
+        var price = itemSelect.value;
+        var qty = document.getElementById("qty").value;
+        var itemName = itemSelect.options[itemSelect.selectedIndex].text.split('-')[0];
 
-    <br>
+        var total = price * qty;
 
-    <a href="https://wa.me/923162813659" style="background-color: #25d366; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 10px 0; font-weight: bold; width: 80%;">💬 Contact Me</a>
-</div>
+        // Updating Receipt UI
+        document.getElementById("res-name").innerText = itemName;
+        document.getElementById("res-price").innerText = "Rs " + price;
+        document.getElementById("res-qty").innerText = qty;
+        document.getElementById("totalAmount").innerText = "Rs " + total;
+    }
 
-
+    function confirmOrder() {
+        var item = document.getElementById("res-name").innerText;
+        var qty = document.getElementById("res-qty").innerText;
+        var total = document.getElementById("totalAmount").innerText;
+        var phone = "923083360360";
+        
+        var message = "*ORDER RECEIPT - MIRCHI 360*%0A" +
+                      "----------------------------%0A" +
+                      "*Item:* " + item + "%0A" +
+                      "*Quantity:* " + qty + "%0A" +
+                      "*Total Bill:* " + total + "%0A" +
+                      "----------------------------%0A" +
+                      "Please prepare my order.";
+        
+        window.open("https://wa.me/" + phone + "?text=" + message);
+    }
 </script>
 
 </body>

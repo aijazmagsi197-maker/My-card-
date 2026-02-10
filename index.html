@@ -1,35 +1,83 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mirchi 360 - Official Menu</title>
     
     <style>
         :root { --primary: #e67e22; --dark: #2c3e50; --green: #27ae60; }
-        body { font-family: 'Arial', sans-serif; background-color: #f8f9fa; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
         
-        .bill-card { background: white; width: 340px; border-radius: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); padding: 20px; border-top: 5px solid var(--primary); position: relative; }
-        .bill-card::after { content: ""; position: absolute; bottom: -10px; left: 0; width: 100%; height: 10px; background: linear-gradient(-45deg, white 5px, transparent 0), linear-gradient(45deg, white 5px, transparent 0); background-size: 10px 10px; }
+        /* پورے پیج کو سیٹ کیا تاکہ کارڈ بیچ میں اور بڑا لگے */
+        body { 
+            font-family: 'Arial', sans-serif; 
+            background-color: #f0f2f5; 
+            display: flex; 
+            justify-content: center; 
+            padding: 10px;
+            margin: 0;
+        }
+        
+        /* کارڈ کو بڑا اور موبائل اسکرین کے مطابق کیا */
+        .bill-card { 
+            background: white; 
+            width: 100%; 
+            max-width: 450px; /* پہلے یہ 340 تھا، اب بڑا کر دیا ہے */
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            padding: 25px; 
+            border-top: 10px solid var(--primary);
+            box-sizing: border-box;
+        }
 
-        .header { text-align: center; border-bottom: 2px dashed #ddd; padding-bottom: 10px; }
-        .header h1 { margin: 5px 0; color: var(--primary); font-size: 24px; letter-spacing: 2px; }
-        .header p { margin: 0; font-size: 12px; color: #777; }
+        .header { text-align: center; border-bottom: 3px dashed #eee; padding-bottom: 15px; }
+        .header h1 { margin: 5px 0; color: var(--primary); font-size: 32px; letter-spacing: 2px; }
+        .header p { margin: 0; font-size: 14px; color: #777; font-weight: bold; }
 
-        .section { margin-top: 20px; }
-        label { display: block; font-size: 13px; font-weight: bold; color: var(--dark); margin-bottom: 5px; }
-        select, input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 15px; font-size: 14px; }
+        .section { margin-top: 25px; }
+        label { display: block; font-size: 16px; font-weight: bold; color: var(--dark); margin-bottom: 8px; }
+        
+        /* ان پٹ ڈبوں کو بڑا کیا تاکہ انگلی سے دبانے میں آسانی ہو */
+        select, input { 
+            width: 100%; 
+            padding: 15px; 
+            border: 2px solid #ddd; 
+            border-radius: 10px; 
+            margin-bottom: 20px; 
+            font-size: 18px; 
+            box-sizing: border-box;
+        }
 
-        .receipt-area { background: #fdfdfd; border: 1px solid #eee; padding: 15px; margin-top: 10px; }
-        .receipt-line { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
-        .total-line { border-top: 2px solid var(--dark); margin-top: 10px; padding-top: 10px; display: flex; justify-content: space-between; font-weight: bold; font-size: 18px; color: var(--green); }
+        .receipt-area { background: #fafafa; border: 2px solid #eee; padding: 20px; border-radius: 10px; }
+        .receipt-line { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 18px; }
+        
+        .total-line { 
+            border-top: 3px solid var(--dark); 
+            margin-top: 15px; 
+            padding-top: 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            font-weight: bold; 
+            font-size: 24px; 
+            color: var(--green); 
+        }
 
-        .order-btn { width: 100%; background: var(--green); color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; cursor: pointer; border-radius: 5px; margin-top: 20px; transition: 0.3s; }
-        .order-btn:hover { background: #219150; }
+        .order-btn { 
+            width: 100%; 
+            background: var(--green); 
+            color: white; 
+            border: none; 
+            padding: 18px; 
+            font-size: 20px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            border-radius: 12px; 
+            margin-top: 25px; 
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
 
-        .developer-tag { text-align: center; margin-top: 30px; font-size: 10px; color: #999; border-top: 1px solid #eee; padding-top: 10px; }
-        .developer-tag b { color: var(--dark); }
+        .developer-tag { text-align: center; margin-top: 30px; font-size: 12px; color: #999; border-top: 1px solid #eee; padding-top: 15px; }
+        .developer-tag b { color: var(--primary); font-size: 14px; }
     </style>
 </head>
 <body>
@@ -37,7 +85,7 @@
 <div class="bill-card">
     <div class="header">
         <h1>MIRCHI 360⁰</h1>
-        <p>ORDERING RECEIPT SYSTEM</p>
+        <p>SMART RECEIPT SYSTEM</p>
     </div>
 
     <div class="section">
@@ -60,7 +108,7 @@
     <div class="receipt-area">
         <div class="receipt-line">
             <span>Item:</span>
-            <span id="res-name">Zinger Burger</span>
+            <span id="res-name" style="font-weight:bold;">Zinger Burger</span>
         </div>
         <div class="receipt-line">
             <span>Price:</span>
@@ -93,7 +141,6 @@
 
         var total = price * qty;
 
-        // Updating Receipt UI
         document.getElementById("res-name").innerText = itemName;
         document.getElementById("res-price").innerText = "Rs " + price;
         document.getElementById("res-qty").innerText = qty;
@@ -120,3 +167,4 @@
 
 </body>
 </html>
+

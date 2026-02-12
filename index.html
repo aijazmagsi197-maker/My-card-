@@ -2,170 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mirchi 360 - Smart Menu</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Sukoon Restaurant - Digital Card</title>
     <style>
-        :root { --primary: #e67e22; --dark: #2c3e50; --green: #27ae60; }
-        
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f0f2f5; 
-            display: flex; 
-            justify-content: center; 
-            padding: 15px;
-            margin: 0;
-        }
-        
-        .bill-card { 
-            background: white; 
-            width: 100%; 
-            max-width: 480px; 
-            border-radius: 20px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2); 
-            padding: 30px; 
-            border-top: 12px solid var(--primary);
-            box-sizing: border-box;
-        }
-
-        .header { text-align: center; border-bottom: 4px dashed #eee; padding-bottom: 20px; }
-        .header h1 { margin: 5px 0; color: var(--primary); font-size: 38px; letter-spacing: 2px; font-weight: 900; }
-        .header p { margin: 0; font-size: 14px; color: #888; letter-spacing: 3px; font-weight: bold; }
-
-        .section { margin-top: 30px; }
-        label { display: block; font-size: 16px; font-weight: bold; color: var(--dark); margin-bottom: 10px; text-transform: uppercase; }
-        
-        select, input { 
-            width: 100%; 
-            padding: 18px; 
-            border: 2px solid #ddd; 
-            border-radius: 12px; 
-            margin-bottom: 25px; 
-            font-size: 18px; 
-            box-sizing: border-box;
-            background: #fff;
-            color: #333;
-        }
-
-        .receipt-area { background: #fdfdfd; border: 2px solid #eee; padding: 25px; border-radius: 15px; position: relative; }
-        .receipt-line { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 18px; border-bottom: 1px solid #f1f1f1; padding-bottom: 8px; }
-        
-        .total-line { 
-            border-top: 4px solid var(--dark); 
-            margin-top: 15px; 
-            padding-top: 15px; 
-            display: flex; 
-            justify-content: space-between; 
-            font-weight: bold; 
-            font-size: 26px; 
-            color: var(--green); 
-        }
-
-        .order-btn { 
-            width: 100%; 
-            background: var(--green); 
-            color: white; 
-            border: none; 
-            padding: 22px; 
-            font-size: 22px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            border-radius: 15px; 
-            margin-top: 30px; 
-            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
-            transition: 0.3s;
-        }
-
-        .order-btn:active { transform: scale(0.98); }
-
-        .developer-tag { text-align: center; margin-top: 40px; font-size: 12px; color: #999; border-top: 1px solid #eee; padding-top: 20px; }
-        .developer-tag b { color: var(--primary); font-size: 14px; text-transform: uppercase; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #eef2f3; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { width: 340px; background: white; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); overflow: hidden; text-align: center; border-top: 8px solid #d35400; }
+        .header { background: #fff; padding: 25px 15px; }
+        .header h1 { margin: 0; font-size: 22px; color: #d35400; text-transform: uppercase; letter-spacing: 1px; }
+        .header p { margin: 5px 0 0; font-size: 13px; color: #7f8c8d; }
+        .content { padding: 20px; }
+        .speciality { background: #fdf2e9; padding: 12px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #d35400; font-size: 14px; color: #2c3e50; text-align: left; }
+        .btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 12px; margin: 12px 0; border-radius: 8px; text-decoration: none; color: white; font-weight: 600; font-size: 15px; transition: 0.3s; box-sizing: border-box; }
+        .btn-call { background-color: #27ae60; }
+        .btn-whatsapp { background-color: #25D366; }
+        .btn-fb { background-color: #1877F2; }
+        .btn-map { background-color: #e74c3c; }
+        .footer { background: #2c3e50; color: #bdc3c7; padding: 15px; font-size: 12px; }
+        .footer span { color: #fff; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<div class="bill-card">
+<div class="card">
     <div class="header">
-        <h1>MIRCHI 360⁰</h1>
-        <p>DIGITAL ORDER SYSTEM</p>
+        <h1>New Sukoon Restaurant</h1>
+        <p>The Taste of Nawabshah Since Years</p>
     </div>
 
-    <div class="section">
-        <label>Select Menu Item</label>
-        <select id="item" onchange="generateBill()">
-            <option value="380">Zinger Burger - Rs 380</option>
-            <option value="450">Chicken Cheese Burger - Rs 450</option>
-            <option value="950">Tikka Pizza (M) - Rs 950</option>
-            <option value="1450">Mirchi Special (L) - Rs 1450</option>
-            <option value="250">Zinger Roll - Rs 250</option>
-            <option value="350">Club Sandwich - Rs 350</option>
-            <option value="300">Loaded Fries - Rs 300</option>
-            <option value="120">Soft Drink - Rs 120</option>
-        </select>
+    <div class="content">
+        <div class="speciality">
+            <strong>Popular Dishes:</strong><br>
+            Fried Fish, Chicken Karahi, Special BBQ & Platters.
+        </div>
 
-        <label>Order Quantity</label>
-        <input type="number" id="qty" value="1" min="1" oninput="generateBill()">
+        <a href="tel:03068294853" class="btn btn-call">📞 Call Now / Order</a>
+
+        <a href="https://wa.me/923068294853?text=Hello! I want to place an order." class="btn btn-whatsapp">💬 WhatsApp Order</a>
+
+        <a href="https://www.facebook.com/p/New-Sukoon-Resturent-100063990814986/" class="btn btn-fb">📘 Facebook Page</a>
+
+        <a href="https://maps.app.goo.gl/Py1sBgBNSjkRgRubF" class="btn btn-map">📍 View on Google Maps</a>
     </div>
 
-    <div class="receipt-area">
-        <div class="receipt-line">
-            <span>Item Name:</span>
-            <span id="res-name" style="font-weight:bold;">Zinger Burger</span>
-        </div>
-        <div class="receipt-line">
-            <span>Unit Price:</span>
-            <span id="res-price">Rs 380</span>
-        </div>
-        <div class="receipt-line">
-            <span>Quantity:</span>
-            <span id="res-qty">1</span>
-        </div>
-        <div class="total-line">
-            <span>TOTAL BILL:</span>
-            <span id="totalAmount">Rs 380</span>
-        </div>
-    </div>
-
-    <button class="order-btn" onclick="confirmOrder()">SEND ORDER TO WHATSAPP</button>
-
-    <div class="developer-tag">
-        POWERED BY:<br>
-        <b>AIJAZ ALI DEVELOPMENTS</b>
+    <div class="footer">
+        Designed by: <span>Aijaz Ali</span><br>
+        Smart Tech & Job News
     </div>
 </div>
-
-<script>
-    function generateBill() {
-        var itemSelect = document.getElementById("item");
-        var price = itemSelect.value;
-        var qty = document.getElementById("qty").value;
-        var itemName = itemSelect.options[itemSelect.selectedIndex].text.split('-')[0].trim();
-
-        var total = price * qty;
-
-        document.getElementById("res-name").innerText = itemName;
-        document.getElementById("res-price").innerText = "Rs " + price;
-        document.getElementById("res-qty").innerText = qty;
-        document.getElementById("totalAmount").innerText = "Rs " + total;
-    }
-
-    function confirmOrder() {
-        var item = document.getElementById("res-name").innerText;
-        var qty = document.getElementById("res-qty").innerText;
-        var total = document.getElementById("totalAmount").innerText;
-        var phone = "923083360360";
-        
-        var message = "*NEW ONLINE ORDER - MIRCHI 360*%0A" +
-                      "----------------------------%0A" +
-                      "*Item:* " + item + "%0A" +
-                      "*Quantity:* " + qty + "%0A" +
-                      "*Net Total:* " + total + "%0A" +
-                      "----------------------------%0A" +
-                      "Kindly confirm this order.";
-        
-        window.open("https://wa.me/" + phone + "?text=" + message);
-    }
-</script>
 
 </body>
 </html>
